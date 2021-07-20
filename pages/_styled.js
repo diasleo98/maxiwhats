@@ -67,7 +67,7 @@ export const AniLogo = styled(Lottie)`
     
     align-self: center; // // alinhamento de base, topo ou centro com elementos de tamanhos distintos
     flex-grow: 1; // se preenche o espaço restante ou não
-    flex-shrink: 1; // se reduz o tamanho se necessário
+    flex-shrink: 3; // se reduz o tamanho se necessário
 `
 
 ;

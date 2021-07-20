@@ -8,6 +8,7 @@ import { useState } from 'react';
 import Lottie from 'react-lottie';
 import animationWhats from '../animations/whats.json';
 import animationMaxi from '../animations/loop.json';
+import ReactInputMask from 'react-input-mask';
 
 
 
@@ -15,6 +16,8 @@ import animationMaxi from '../animations/loop.json';
 export default function Home() {
   const [number, setNumber] = useState();
   const [text, setText] = useState();
+
+  var openedWindow;
 
   const defaultOptions = {
     loop: true,
@@ -47,33 +50,35 @@ export default function Home() {
        <Lottie className=" flex-shrink-1 h-full w-full flex-grow-1" options={defaultOptions}/>
      </Whats>
      <Content>
-        <input id="i" onChange={typed} className=" mt-10 mx-10 appearance-none border border-transparent p-2 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-pink-600 focus:border-transparent" placeholder="Número do WhatsApp (COM DDD)"></input>
-        <textarea type="text" onChange={textTyped} className=" self-stretch p-2 m-10 rounded focus:outline-none focus:ring-2 focus:ring-pink-600 focus:border-transparent" placeholder="Texto a ser enviado..."></textarea>
-        <button onClick={clicked} className=" mx-5 bg-pink-500 text-white text-base font-semibold h-10 w-50 rounded-lg shadow-md hover:bg-pink-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200" type="button">
+        <ReactInputMask id="i" value={number} maskChar={null}  onChange={typed} mask="(99) 99999-9999" className=" mt-10 mx-10 appearance-none border border-transparent p-2 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-pink-600 focus:border-transparent" placeholder="Número do WhatsApp (COM DDD)"></ReactInputMask>
+        <textarea value={text} type="text" onChange={textTyped} className=" self-stretch p-2 m-10 rounded focus:outline-none focus:ring-2 focus:ring-pink-600 focus:border-transparent" placeholder="Texto a ser enviado..."></textarea>
+        <button onClick={clicked} className=" mx-5 bg-pink-500 text-white text-base font-semibold h-10 w-50 rounded-lg shadow-md hover:bg-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 " type="button">
           Enviar
         </button>      
      </Content>
     </Grid>
   )
   function clicked(props){
-    if(!(isNaN(number))){
-      console.log(text);
-      window.open(`https://wa.me/${number}/?text=${text}`, "Whats")
-      document.getElementById("i").value = "";
+    if(number != "" && !isNaN(number)){
+      openedWindow = window.open(`https://wa.me/${"55" + number}/?text=${text}`, "Whats");
+      //setTimeout(ClosePage, 2000);
       setNumber("");
     }
     else{
       window.alert("Número inválido");
     }
   }
+  function ClosePage(){
+    openedWindow.close();
+  }
   function typed(event){
-    console.log(event.target.value);
-    setNumber("55" + event.target.value);
+    var res = event.target.value.replace("(", "").replace(")","").replace(" ", "").replace("-", "").replace("_","");
+    console.log(res);
+    setNumber(res);
   }
   function textTyped(event){
     console.log(event.target.value);
     setText(event.target.value);
-
   }
 
 }
