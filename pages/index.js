@@ -14,8 +14,8 @@ import ReactInputMask from 'react-input-mask';
 
 
 export default function Home() {
-  const [number, setNumber] = useState();
-  const [text, setText] = useState();
+  const [number, setNumber] = useState("");
+  const [text, setText] = useState("");
 
   var openedWindow;
 
