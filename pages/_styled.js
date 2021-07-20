@@ -71,3 +71,5 @@ export const AniLogo = styled(Lottie)`
 `
 
 ;
+
+export default Grid;
