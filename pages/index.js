@@ -50,7 +50,7 @@ export default function Home() {
        <Lottie className=" flex-shrink-1 h-full w-full flex-grow-1" options={defaultOptions}/>
      </Whats>
      <Content>
-        <ReactInputMask id="i" value={number} maskChar={null}  onChange={typed} mask="(99) 99999-9999" className=" mt-10 mx-10 appearance-none border border-transparent p-2 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-pink-600 focus:border-transparent" placeholder="Número do WhatsApp (COM DDD)"></ReactInputMask>
+        <ReactInputMask type="number" id="i" value={number} maskChar={null}  onChange={typed} mask="(99) 99999-9999" className=" mt-10 mx-10 appearance-none border border-transparent p-2 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-pink-600 focus:border-transparent" placeholder="Número do WhatsApp (COM DDD)"></ReactInputMask>
         <textarea value={text} type="text" onChange={textTyped} className=" self-stretch p-2 m-10 rounded focus:outline-none focus:ring-2 focus:ring-pink-600 focus:border-transparent" placeholder="Texto a ser enviado..."></textarea>
         <button onClick={clicked} className=" mx-5 bg-pink-500 text-white text-base font-semibold h-10 w-50 rounded-lg shadow-md hover:bg-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 " type="button">
           Enviar
