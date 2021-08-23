@@ -9,6 +9,7 @@ import Lottie from 'react-lottie';
 import animationWhats from '../animations/whats.json';
 import animationMaxi from '../animations/loop.json';
 import ReactInputMask from 'react-input-mask';
+import * as ga from '../lib/ga'
 
 
 
@@ -63,6 +64,12 @@ export default function Home() {
     if(number != "" && !isNaN(number)){
       openedWindow = window.open(`https://wa.me/${"55" + number}/?text=${text}`, "Whats");
       //setTimeout(ClosePage, 2000);
+      ga.event({
+        action: "abrir whats",
+        params : {
+          numero: number
+        }
+      })
       setNumber("");
     }
     else{
