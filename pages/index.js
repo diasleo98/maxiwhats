@@ -35,6 +35,7 @@ export default function Home() {
       preserveAspectRatio: "xMidYMid slice"
     }
   };
+  console.log(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS)
   return (
     <Grid>
       <Head>
