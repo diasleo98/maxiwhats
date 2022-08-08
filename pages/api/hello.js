@@ -2,7 +2,6 @@
 
 export default (req, res) => {
   console.log(req.body)
-  console.log(req.params)
-  console.log(req.get('Content-Type'))
+  
   res.status(200).json({ name: 'John Doe' })
 }
